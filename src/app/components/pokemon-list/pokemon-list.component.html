@@ -1,0 +1,62 @@
+<section class="container">
+
+  <h1>Pokédex</h1>
+
+  <p *ngIf="loading">
+    Carregando...
+  </p>
+
+  <div class="grid" *ngIf="!loading">
+
+    <article class="card" *ngFor="let pokemon of pokemons">
+
+      <span class="pokemon-number">
+        #{{ pokemon.id }}
+      </span>
+
+      <img
+        [src]="pokemon.sprites.front_default"
+        [alt]="pokemon.name"
+      />
+
+      <h3>
+        {{ pokemon.name | titlecase }}
+      </h3>
+
+      <div class="types">
+
+        <span *ngFor="let type of pokemon.types">
+          {{ type.type.name }}
+        </span>
+
+      </div>
+
+      <button
+        class="details-button"
+        [routerLink]="['/pokemon', pokemon.id]">
+
+        Ver detalhes
+
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+<div class="pagination" *ngIf="!loading">
+  <button
+    class="pagination-button"
+    (click)="previousPage()"
+    [disabled]="offset === 0">
+    Anterior
+  </button>
+
+  <span> {{ page }}</span>
+
+  <button
+    class="pagination-button"
+    (click)="nextPage()">
+    Próxima
+  </button>
+</div>
