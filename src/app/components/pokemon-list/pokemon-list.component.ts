@@ -11,9 +11,13 @@ import { Pokemon } from '../../models/pokemon.model';
 export class PokemonListComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
+  pokemonsFiltrados: Pokemon[] = [];
+
+  filtro = '';
+
   loading = true;
 
-  limit = 18;
+  limit = 20;
   offset = 0;
   page = 1;
 
@@ -33,9 +37,9 @@ export class PokemonListComponent implements OnInit {
       .subscribe({
         next: (pokemons: Pokemon[]) => {
           this.pokemons = pokemons;
+          this.pokemonsFiltrados = pokemons;
           this.loading = false;
         },
-
         error: (error: any) => {
           console.error(error);
           this.loading = false;
@@ -43,10 +47,30 @@ export class PokemonListComponent implements OnInit {
       });
   }
 
+  filtrar(): void {
+    const valor = this.filtro.trim().toLowerCase();
+
+    if (!valor) {
+      this.pokemonsFiltrados = this.pokemons;
+      return;
+    }
+
+    this.pokemonsFiltrados = this.pokemons.filter((pokemon: Pokemon) => {
+      const id = pokemon.id.toString();
+      const nome = pokemon.name.toLowerCase();
+      const tipos = pokemon.types
+        .map(tipo => tipo.type.name.toLowerCase())
+        .join(' ');
+
+      return id.includes(valor)
+        || nome.includes(valor)
+        || tipos.includes(valor);
+    });
+  }
+
   nextPage(): void {
     this.offset += this.limit;
     this.page++;
-
     this.fetchPokemons();
   }
 
@@ -57,7 +81,6 @@ export class PokemonListComponent implements OnInit {
 
     this.offset -= this.limit;
     this.page--;
-
     this.fetchPokemons();
   }
 }

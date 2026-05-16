@@ -93,5 +93,8 @@
       }
     }
   },
-  "defaultProject": "poke-poke"
+  "defaultProject": "poke-poke",
+  "cli": {
+    "analytics": "3a9b948e-60d4-41ac-9d46-02eb81c17948"
+  }
 }

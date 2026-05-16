@@ -65,16 +65,103 @@ h1 {
 
 .types {
   display: flex;
-  gap: 8px;
   justify-content: center;
   flex-wrap: wrap;
+
+  gap: 8px;
+  margin: 16px 0;
 }
 
-.types span {
-  background: #eeeeee;
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 12px;
+.type {
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  min-width: 70px;
+  text-align: center;
+}
+
+.fire {
+  background: #F08030;
+}
+
+.water {
+  background: #6890F0;
+}
+
+.grass {
+  background: #78C850;
+}
+
+.electric {
+  background: #F8D030;
+  color: #333;
+}
+
+.psychic {
+  background: #F85888;
+}
+
+.ice {
+  background: #98D8D8;
+  color: #333;
+}
+
+.fighting {
+  background: #C03028;
+}
+
+.poison {
+  background: #A040A0;
+}
+
+.ground {
+  background: #E0C068;
+  color: #333;
+}
+
+.flying {
+  background: #A890F0;
+}
+
+.bug {
+  background: #A8B820;
+}
+
+.rock {
+  background: #B8A038;
+}
+
+.ghost {
+  background: #705898;
+}
+
+.dark {
+  background: #705848;
+}
+
+.dragon {
+  background: linear-gradient(
+    180deg,
+    #53A4CF 50%,
+    #F16E57 50%
+  );
+}
+
+.steel {
+  background: #B8B8D0;
+  color: #333;
+}
+
+.fairy {
+  background: #EE99AC;
+}
+
+.normal {
+  background: #A8A878;
 }
 
 .details-button {
@@ -109,4 +196,25 @@ h1 {
 .pagination-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 16px;
+  border: 2px solid #eeeeee;
+  border-radius: 14px;
+  font-size: 15px;
+  outline: none;
+  text-align: center;
+}
+
+.search-container input:focus {
+  border-color: #ef5350;
 }
