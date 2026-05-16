@@ -2,22 +2,23 @@
 
   <h1>Pokédex</h1>
 
+  <div class="search-container">
+    <input type="text" placeholder="Buscar" [(ngModel)]="filtro" (input)="filtrar()" />
+  </div>
+
   <p *ngIf="loading">
     Carregando...
   </p>
 
   <div class="grid" *ngIf="!loading">
 
-    <article class="card" *ngFor="let pokemon of pokemons">
+    <article class="card" *ngFor="let pokemon of pokemonsFiltrados">
 
       <span class="pokemon-number">
         #{{ pokemon.id }}
       </span>
 
-      <img
-        [src]="pokemon.sprites.front_default"
-        [alt]="pokemon.name"
-      />
+      <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
 
       <h3>
         {{ pokemon.name | titlecase }}
@@ -31,9 +32,7 @@
 
       </div>
 
-      <button
-        class="details-button"
-        [routerLink]="['/pokemon', pokemon.id]">
+      <button class="details-button" [routerLink]="['/pokemon', pokemon.id]">
 
         Ver detalhes
 
@@ -45,18 +44,13 @@
 
 </section>
 <div class="pagination" *ngIf="!loading">
-  <button
-    class="pagination-button"
-    (click)="previousPage()"
-    [disabled]="offset === 0">
+  <button class="pagination-button" (click)="previousPage()" [disabled]="offset === 0">
     Anterior
   </button>
 
   <span> {{ page }}</span>
 
-  <button
-    class="pagination-button"
-    (click)="nextPage()">
+  <button class="pagination-button" (click)="nextPage()">
     Próxima
   </button>
 </div>
