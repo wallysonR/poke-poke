@@ -28,7 +28,7 @@
 
         <span *ngFor="let tipo of pokemon.types" class="type" [ngClass]="tipo.type.name">
 
-          {{ tipo.type.name }}
+          {{ traduzirTipo(tipo.type.name) }}
 
         </span>
 
